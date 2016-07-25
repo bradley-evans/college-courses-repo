@@ -1,0 +1,13 @@
+From Bradley Evans:
+
+The most difficult component of the assignment was trying to properly
+calculate periods to generate appropriate tones, and putting appropriate
+limits in to keep the waveform within the limitations of the hardware.
+Other than that, fairly straightforward.
+
+
+From Bradd Carey:
+
+Everything worked as expected, so there isn't much to report.  Also, 
+there wasn't any new concepts since lab 7 is the pulse width 
+modulation lab.

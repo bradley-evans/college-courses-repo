@@ -1,0 +1,22 @@
+From Bradley Evans:
+
+The PWM was a very useful new feature to tack on to our state machines.
+After SyncSM, the PWM seemed very intuitive and appealed to me after coming
+from circuit analysis. I only wish that the PWM could output something other
+than a square waveform.
+I had responsibility for ensuring hardware was doing what it was
+supposed to be doing as well as working Part 2 more independently than other
+labs (as an individual exercise). My partner did the majority of the software
+work. I also drafted state machines for this lab that eventually were
+implemented in code.
+
+From Braddley Carey:
+
+The built in PWM is a useful and easy to understand concept.  The entire
+lab was no more than two hours, of which a lot was just choosing a song
+for the challenge section and translating it into notes.  I was concerned 
+about the speaker when lab 6 was complicated enough to just get a couple
+of notes out, but the PWM made it very easy.
+I still have difficulty understanding how adjusting average amplitude of the
+signal directly corresponds to a change in frequency from the speaker, but
+I'll figure it out before the next lab.

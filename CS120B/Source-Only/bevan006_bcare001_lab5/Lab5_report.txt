@@ -1,0 +1,15 @@
+From Bradley Evans:
+
+Implementation of these labs had some added complexity due to the added
+timing factors but, overall, was straightforward. My partner performed most
+of the hands-on programming of the code for this submission while I assisted
+with hardware troubleshooting and soldiering (for the LCD display). I also
+assisted with planning / diagramming the state machines for this lab.
+
+From Braddley Carey:
+
+I felt pretty lost on the timer stuff.  The lab specified to copy the code
+given but the explanations given didn't make a lot of sense.  It was a few 
+lectures later when TimerFlag and TimerISR was finally mentioned. I still don't
+understand exactly why the other functions are needed, but we got everything
+working.  That's the most important part.

@@ -1,0 +1,33 @@
+  // // cout /**/ << "Parent is a three node, splitting...";
+            // if (string < target->small) {
+            //     // cout /**/ << "Promoting small...";
+            //     addnode(target->parent, target->small);
+            //     if (target->parent->middle == 0) {
+            //         target->parent->middle = new Node(target->large);
+            //         target->parent->middle->parent = target->parent;
+            //         // cout /**/ << "Adding " << string << "...";
+            //         target->small = string;
+            //         target->large.clear();   
+            //     } else {
+            //         addnode(target->parent->middle,target->large);
+            //         target->small = string;
+            //         target->large.clear();
+            //     }
+            //     return;
+            // }
+            // if (string > target->large) {
+            //     addnode(target->parent, target->large);
+            //     if (target->parent->middle == 0) {
+            //         target->parent->middle = new Node(target->small);
+            //         target->parent->middle->parent = target->parent;
+            //         target->small = string;
+            //         target->large.clear();   
+            //     } else {
+            //         addnode(target->parent->middle,target->large);
+            //         target->large.clear();
+            //     }
+            //     return;
+            // }    
+            // if (string > target->small && string < target->large) {
+                
+            // }

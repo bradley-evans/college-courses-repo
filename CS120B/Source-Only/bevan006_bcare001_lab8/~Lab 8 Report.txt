@@ -1,0 +1,14 @@
+From Bradley Evans:
+
+There were difficulties with the hardware during this experiment. Unfortunately,
+a poorly-done chip movement on the breadboard had us dropping a +5V hot lead in
+the ATMega's RESET pin rather than into the +5VCC pin as intended. This fried
+the ATMega and caused us problems before the root cause was identified. 
+
+From Braddley Carey:
+
+I moved the chip and apparently couldn't count to 10 and burned the ATMega.
+After replacing it with the spare the problems fell right into place. The
+ADC I'm sure will come in handy for the project.  I'm trying to think of
+a way to implement a joystick which requires 2 ADCs for each axis.  I look
+forward to that challenge.

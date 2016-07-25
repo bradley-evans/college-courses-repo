@@ -1,0 +1,4 @@
+dictionary.txt
+outc.txt
+heart
+wince

@@ -1,0 +1,4 @@
+dictionary.txt
+outb.txt
+stone
+brown

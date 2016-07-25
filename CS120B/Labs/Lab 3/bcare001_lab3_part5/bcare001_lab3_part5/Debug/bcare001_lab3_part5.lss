@@ -1,0 +1,347 @@
+
+bcare001_lab3_part5.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001e2  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  00800060  000001e2  00000276  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000003  00800064  00800064  0000027a  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000027a  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002ac  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000038  00000000  00000000  000002e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000246  00000000  00000000  00000320  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000117  00000000  00000000  00000566  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000017b  00000000  00000000  0000067d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000054  00000000  00000000  000007f8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000001e5  00000000  00000000  0000084c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000000c5  00000000  00000000  00000a31  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000028  00000000  00000000  00000af6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 31 00 	jmp	0x62	; 0x62 <__ctors_end>
+   4:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+   8:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+   c:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  10:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  14:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  18:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  1c:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  20:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  24:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  28:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  2c:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  30:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  34:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  38:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  3c:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  40:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  44:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  48:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  4c:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  50:	0c 94 4e 00 	jmp	0x9c	; 0x9c <__bad_interrupt>
+  54:	5d 00       	.word	0x005d	; ????
+  56:	63 00       	.word	0x0063	; ????
+  58:	67 00       	.word	0x0067	; ????
+  5a:	76 00       	.word	0x0076	; ????
+  5c:	8b 00       	.word	0x008b	; ????
+  5e:	94 00       	.word	0x0094	; ????
+  60:	c3 00       	.word	0x00c3	; ????
+
+00000062 <__ctors_end>:
+  62:	11 24       	eor	r1, r1
+  64:	1f be       	out	0x3f, r1	; 63
+  66:	cf e5       	ldi	r28, 0x5F	; 95
+  68:	d8 e0       	ldi	r29, 0x08	; 8
+  6a:	de bf       	out	0x3e, r29	; 62
+  6c:	cd bf       	out	0x3d, r28	; 61
+
+0000006e <__do_copy_data>:
+  6e:	10 e0       	ldi	r17, 0x00	; 0
+  70:	a0 e6       	ldi	r26, 0x60	; 96
+  72:	b0 e0       	ldi	r27, 0x00	; 0
+  74:	e2 ee       	ldi	r30, 0xE2	; 226
+  76:	f1 e0       	ldi	r31, 0x01	; 1
+  78:	02 c0       	rjmp	.+4      	; 0x7e <__do_copy_data+0x10>
+  7a:	05 90       	lpm	r0, Z+
+  7c:	0d 92       	st	X+, r0
+  7e:	a4 36       	cpi	r26, 0x64	; 100
+  80:	b1 07       	cpc	r27, r17
+  82:	d9 f7       	brne	.-10     	; 0x7a <__do_copy_data+0xc>
+
+00000084 <__do_clear_bss>:
+  84:	20 e0       	ldi	r18, 0x00	; 0
+  86:	a4 e6       	ldi	r26, 0x64	; 100
+  88:	b0 e0       	ldi	r27, 0x00	; 0
+  8a:	01 c0       	rjmp	.+2      	; 0x8e <.do_clear_bss_start>
+
+0000008c <.do_clear_bss_loop>:
+  8c:	1d 92       	st	X+, r1
+
+0000008e <.do_clear_bss_start>:
+  8e:	a7 36       	cpi	r26, 0x67	; 103
+  90:	b2 07       	cpc	r27, r18
+  92:	e1 f7       	brne	.-8      	; 0x8c <.do_clear_bss_loop>
+  94:	0e 94 d7 00 	call	0x1ae	; 0x1ae <main>
+  98:	0c 94 ef 00 	jmp	0x1de	; 0x1de <_exit>
+
+0000009c <__bad_interrupt>:
+  9c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a0 <lock>:
+unsigned char getBit(unsigned char x, unsigned char k) {
+    return ((x & (0x01 << k)) != 0);
+}	
+
+void lock() {
+	switch(LOCK_State) {
+  a0:	20 91 65 00 	lds	r18, 0x0065
+  a4:	82 2f       	mov	r24, r18
+  a6:	90 e0       	ldi	r25, 0x00	; 0
+  a8:	87 30       	cpi	r24, 0x07	; 7
+  aa:	91 05       	cpc	r25, r1
+  ac:	08 f0       	brcs	.+2      	; 0xb0 <lock+0x10>
+  ae:	6f c0       	rjmp	.+222    	; 0x18e <lock+0xee>
+  b0:	fc 01       	movw	r30, r24
+  b2:	e6 5d       	subi	r30, 0xD6	; 214
+  b4:	ff 4f       	sbci	r31, 0xFF	; 255
+  b6:	0c 94 e9 00 	jmp	0x1d2	; 0x1d2 <__tablejump2__>
+		case start:
+			tempB = 0x00;
+  ba:	10 92 64 00 	sts	0x0064, r1
+			LOCK_State = LOCK_init;
+  be:	81 e0       	ldi	r24, 0x01	; 1
+  c0:	80 93 65 00 	sts	0x0065, r24
+			break;
+  c4:	6b c0       	rjmp	.+214    	; 0x19c <lock+0xfc>
+		case LOCK_init:
+			LOCK_State = LOCK_waitCode;
+  c6:	82 e0       	ldi	r24, 0x02	; 2
+  c8:	80 93 65 00 	sts	0x0065, r24
+			break;
+  cc:	08 95       	ret
+		case LOCK_waitCode:
+			LOCK_State = (getBit(PINA,0)||getBit(PINA,1)||getBit(PINA,2)) ? LOCK_valiCode : LOCK_waitCode;
+  ce:	c8 99       	sbic	0x19, 0	; 25
+  d0:	05 c0       	rjmp	.+10     	; 0xdc <lock+0x3c>
+  d2:	c9 99       	sbic	0x19, 1	; 25
+  d4:	05 c0       	rjmp	.+10     	; 0xe0 <lock+0x40>
+  d6:	ca 99       	sbic	0x19, 2	; 25
+  d8:	05 c0       	rjmp	.+10     	; 0xe4 <lock+0x44>
+  da:	05 c0       	rjmp	.+10     	; 0xe6 <lock+0x46>
+  dc:	23 e0       	ldi	r18, 0x03	; 3
+  de:	03 c0       	rjmp	.+6      	; 0xe6 <lock+0x46>
+  e0:	23 e0       	ldi	r18, 0x03	; 3
+  e2:	01 c0       	rjmp	.+2      	; 0xe6 <lock+0x46>
+  e4:	23 e0       	ldi	r18, 0x03	; 3
+  e6:	20 93 65 00 	sts	0x0065, r18
+			break;
+  ea:	51 c0       	rjmp	.+162    	; 0x18e <lock+0xee>
+		case LOCK_valiCode:
+			if(PINA==passcode[PINC]){
+  ec:	99 b3       	in	r25, 0x19	; 25
+  ee:	e3 b3       	in	r30, 0x13	; 19
+  f0:	f0 e0       	ldi	r31, 0x00	; 0
+  f2:	e0 5a       	subi	r30, 0xA0	; 160
+  f4:	ff 4f       	sbci	r31, 0xFF	; 255
+  f6:	80 81       	ld	r24, Z
+  f8:	98 13       	cpse	r25, r24
+  fa:	09 c0       	rjmp	.+18     	; 0x10e <lock+0x6e>
+				LOCK_State = LOCK_release;
+  fc:	84 e0       	ldi	r24, 0x04	; 4
+  fe:	80 93 65 00 	sts	0x0065, r24
+				tempC++;
+ 102:	80 91 66 00 	lds	r24, 0x0066
+ 106:	8f 5f       	subi	r24, 0xFF	; 255
+ 108:	80 93 66 00 	sts	0x0066, r24
+ 10c:	40 c0       	rjmp	.+128    	; 0x18e <lock+0xee>
+			}else{
+				LOCK_State = LOCK_init;
+ 10e:	81 e0       	ldi	r24, 0x01	; 1
+ 110:	80 93 65 00 	sts	0x0065, r24
+ 114:	43 c0       	rjmp	.+134    	; 0x19c <lock+0xfc>
+			}	
+			break;
+		case LOCK_release:
+			LOCK_State = (getBit(PINA,0)||getBit(PINA,1)||getBit(PINA,2)) ? LOCK_release : LOCK_toggle;
+ 116:	c8 99       	sbic	0x19, 0	; 25
+ 118:	04 c0       	rjmp	.+8      	; 0x122 <lock+0x82>
+ 11a:	c9 99       	sbic	0x19, 1	; 25
+ 11c:	02 c0       	rjmp	.+4      	; 0x122 <lock+0x82>
+ 11e:	ca 9b       	sbis	0x19, 2	; 25
+ 120:	25 e0       	ldi	r18, 0x05	; 5
+ 122:	20 93 65 00 	sts	0x0065, r18
+			break;
+ 126:	33 c0       	rjmp	.+102    	; 0x18e <lock+0xee>
+		case LOCK_toggle:
+			if(PINC <  0x04 && (!(getBit(PINA,0)||getBit(PINA,1)||getBit(PINA,2)))){
+ 128:	83 b3       	in	r24, 0x13	; 19
+ 12a:	84 30       	cpi	r24, 0x04	; 4
+ 12c:	48 f4       	brcc	.+18     	; 0x140 <lock+0xa0>
+ 12e:	c8 99       	sbic	0x19, 0	; 25
+ 130:	07 c0       	rjmp	.+14     	; 0x140 <lock+0xa0>
+ 132:	c9 99       	sbic	0x19, 1	; 25
+ 134:	05 c0       	rjmp	.+10     	; 0x140 <lock+0xa0>
+ 136:	ca 99       	sbic	0x19, 2	; 25
+ 138:	03 c0       	rjmp	.+6      	; 0x140 <lock+0xa0>
+				LOCK_State = LOCK_waitCode;
+ 13a:	82 e0       	ldi	r24, 0x02	; 2
+ 13c:	80 93 65 00 	sts	0x0065, r24
+			}
+			if(PINC >= 0x04 && (!(getBit(PINA,0)||getBit(PINA,1)||getBit(PINA,2)))){
+ 140:	83 b3       	in	r24, 0x13	; 19
+ 142:	84 30       	cpi	r24, 0x04	; 4
+ 144:	b0 f0       	brcs	.+44     	; 0x172 <lock+0xd2>
+ 146:	c8 99       	sbic	0x19, 0	; 25
+ 148:	14 c0       	rjmp	.+40     	; 0x172 <lock+0xd2>
+ 14a:	c9 99       	sbic	0x19, 1	; 25
+ 14c:	12 c0       	rjmp	.+36     	; 0x172 <lock+0xd2>
+ 14e:	ca 99       	sbic	0x19, 2	; 25
+ 150:	10 c0       	rjmp	.+32     	; 0x172 <lock+0xd2>
+				if(getBit(PINB,0)){
+ 152:	b0 9b       	sbis	0x16, 0	; 22
+ 154:	06 c0       	rjmp	.+12     	; 0x162 <lock+0xc2>
+unsigned char passcode[4] = {0x04, 0x01, 0x02, 0x01};
+enum LOCK_States { start, LOCK_init, LOCK_waitCode, LOCK_valiCode, LOCK_release, LOCK_toggle, LOCK_inside } LOCK_State;
+
+//Functions
+unsigned char setBit(unsigned char x, unsigned char k, unsigned char b) {
+    return (b ? x | (0x01 << k) : x & ~(0x01 << k));
+ 156:	80 91 64 00 	lds	r24, 0x0064
+ 15a:	8e 7f       	andi	r24, 0xFE	; 254
+			if(PINC <  0x04 && (!(getBit(PINA,0)||getBit(PINA,1)||getBit(PINA,2)))){
+				LOCK_State = LOCK_waitCode;
+			}
+			if(PINC >= 0x04 && (!(getBit(PINA,0)||getBit(PINA,1)||getBit(PINA,2)))){
+				if(getBit(PINB,0)){
+					tempB = setBit(tempB,0,0);
+ 15c:	80 93 64 00 	sts	0x0064, r24
+ 160:	05 c0       	rjmp	.+10     	; 0x16c <lock+0xcc>
+unsigned char passcode[4] = {0x04, 0x01, 0x02, 0x01};
+enum LOCK_States { start, LOCK_init, LOCK_waitCode, LOCK_valiCode, LOCK_release, LOCK_toggle, LOCK_inside } LOCK_State;
+
+//Functions
+unsigned char setBit(unsigned char x, unsigned char k, unsigned char b) {
+    return (b ? x | (0x01 << k) : x & ~(0x01 << k));
+ 162:	80 91 64 00 	lds	r24, 0x0064
+ 166:	81 60       	ori	r24, 0x01	; 1
+			}
+			if(PINC >= 0x04 && (!(getBit(PINA,0)||getBit(PINA,1)||getBit(PINA,2)))){
+				if(getBit(PINB,0)){
+					tempB = setBit(tempB,0,0);
+				}else{
+					tempB = setBit(tempB,0,1);
+ 168:	80 93 64 00 	sts	0x0064, r24
+				}
+				LOCK_State = LOCK_init;
+ 16c:	81 e0       	ldi	r24, 0x01	; 1
+ 16e:	80 93 65 00 	sts	0x0065, r24
+			}
+			if(getBit(PINA,0)||getBit(PINA,1)||getBit(PINA,2)){
+ 172:	c8 99       	sbic	0x19, 0	; 25
+ 174:	04 c0       	rjmp	.+8      	; 0x17e <lock+0xde>
+ 176:	c9 99       	sbic	0x19, 1	; 25
+ 178:	02 c0       	rjmp	.+4      	; 0x17e <lock+0xde>
+ 17a:	ca 9b       	sbis	0x19, 2	; 25
+ 17c:	08 c0       	rjmp	.+16     	; 0x18e <lock+0xee>
+				LOCK_State = LOCK_toggle;
+ 17e:	85 e0       	ldi	r24, 0x05	; 5
+ 180:	80 93 65 00 	sts	0x0065, r24
+ 184:	08 95       	ret
+			}			
+			break;
+		case LOCK_inside:
+			LOCK_State = LOCK_init;
+ 186:	81 e0       	ldi	r24, 0x01	; 1
+ 188:	80 93 65 00 	sts	0x0065, r24
+			break;
+ 18c:	07 c0       	rjmp	.+14     	; 0x19c <lock+0xfc>
+		default:
+			break;
+	}
+	switch(LOCK_State) {
+ 18e:	80 91 65 00 	lds	r24, 0x0065
+ 192:	81 30       	cpi	r24, 0x01	; 1
+ 194:	19 f0       	breq	.+6      	; 0x19c <lock+0xfc>
+ 196:	86 30       	cpi	r24, 0x06	; 6
+ 198:	21 f0       	breq	.+8      	; 0x1a2 <lock+0x102>
+ 19a:	08 95       	ret
+		case start:
+			break;
+		case LOCK_init:
+			tempC = 0x00;
+ 19c:	10 92 66 00 	sts	0x0066, r1
+			break;
+ 1a0:	08 95       	ret
+		case LOCK_release:
+			break;
+		case LOCK_toggle:
+			break;
+		case LOCK_inside:
+			tempB=1;
+ 1a2:	81 e0       	ldi	r24, 0x01	; 1
+ 1a4:	80 93 64 00 	sts	0x0064, r24
+			LOCK_State = LOCK_init;
+ 1a8:	80 93 65 00 	sts	0x0065, r24
+ 1ac:	08 95       	ret
+
+000001ae <main>:
+			break;
+	} //State Actions
+
+}
+int main() {
+	DDRA = 0x00;
+ 1ae:	1a ba       	out	0x1a, r1	; 26
+	DDRB = 0xFF;
+ 1b0:	8f ef       	ldi	r24, 0xFF	; 255
+ 1b2:	87 bb       	out	0x17, r24	; 23
+	DDRC = 0xFF;
+ 1b4:	84 bb       	out	0x14, r24	; 20
+	PORTA = 0x00;
+ 1b6:	1b ba       	out	0x1b, r1	; 27
+	PORTB = 0x00;
+ 1b8:	18 ba       	out	0x18, r1	; 24
+	PORTC = 0x00;
+ 1ba:	15 ba       	out	0x15, r1	; 21
+	LOCK_State = start; // Initial state
+ 1bc:	10 92 65 00 	sts	0x0065, r1
+	while(1) {
+		lock();
+ 1c0:	0e 94 50 00 	call	0xa0	; 0xa0 <lock>
+		PORTB = tempB;
+ 1c4:	80 91 64 00 	lds	r24, 0x0064
+ 1c8:	88 bb       	out	0x18, r24	; 24
+		PORTC = tempC;
+ 1ca:	80 91 66 00 	lds	r24, 0x0066
+ 1ce:	85 bb       	out	0x15, r24	; 21
+	} 
+ 1d0:	f7 cf       	rjmp	.-18     	; 0x1c0 <main+0x12>
+
+000001d2 <__tablejump2__>:
+ 1d2:	ee 0f       	add	r30, r30
+ 1d4:	ff 1f       	adc	r31, r31
+ 1d6:	05 90       	lpm	r0, Z+
+ 1d8:	f4 91       	lpm	r31, Z
+ 1da:	e0 2d       	mov	r30, r0
+ 1dc:	09 94       	ijmp
+
+000001de <_exit>:
+ 1de:	f8 94       	cli
+
+000001e0 <__stop_program>:
+ 1e0:	ff cf       	rjmp	.-2      	; 0x1e0 <__stop_program>

@@ -1,0 +1,27 @@
+From Bradley Evans:
+
+This project was about taking what we had learned about RIMS, Amtel, and
+programming in C for the ATMega and actually implementing it onto the hardware.
+To get this done we had to do some significant initial setup on breadboards in
+order to have a neat, presentable prototyping setup going forward. Also, we used
+some components present in the kit that were not described in the lab manual
+(most especially a constant DC power supply) that allowed us to provide safer,
+more consistent power.
+
+Other students had not carefully considered current and voltage maximum
+tolerances and had already damaged components (such as LEDs or the microprocessor
+itself). We took care to ensure that the output and input pins were not given
+any more voltage than necessary (it turned out to be a bit more than 1.4V) to
+actuate the microprocessor logic. Any more ran a risk of damaging the chips.
+
+My principle responsibility for this lab was hardware analysis and
+troubleshooting.
+
+
+From Braddley Carey:
+After getting passed a few topics that were skimmed in the lab report such as
+setting all buttons to pull up mode and how to access them in code 
+( A0 = (~PINA & 0x01)) the rest wasn't terribly difficult.  The code 
+prototyping and structure was identical to lab 3 with no increase in
+complexity.  All in all this lab was just a reprieve code-wise so we could
+focus on the electrical components and how to interact with a physical system.

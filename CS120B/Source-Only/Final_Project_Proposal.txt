@@ -1,0 +1,33 @@
+FINAL PROJECT PROPOSAL
+
+for Bradley Evans and Braddley Carey
+
+Summary:
+
+A hardware-based cryptomodule.
+
+The device will take data from an unencrypted (plaintext) flash drive, encrypt
+the data according to some algorithm, and then write this data to another
+flash drive. A second device will mirror this one and 
+
+Components and Build Upons:
+
+[Build Upon: USB Connectivity] A thumb drive will interface with a USB port
+connected to the system. The ATMEga1284P will read from the drive and execute
+an encryption algorithm, outputing the ciphertext onto another flash drive in 
+another port.
+
+[Build Upon: Bluetooth] The device will output decryption progress via
+bluetooth, and an application will display the progress.
+
+[Build Upon: Shift Register] The device will output decryption to an LCD,
+which will attach to the microprocessor via a shift register.
+
+[Build Upon: Arduino/Raspberry Pi integration, RFID] The device will require
+authentication via an RFID card before it begins encryption/decryption.
+Libraries will be used to implement the RFID components.
+
+The device will implement a simple encryption algorithm. We are researching
+precisely what algorithm we might use, but the following StackExchange thread
+has good general coverage of my direction regarding the algorithm itself:
+http://stackoverflow.com/questions/7622617/simply-encrypt-a-string-in-c

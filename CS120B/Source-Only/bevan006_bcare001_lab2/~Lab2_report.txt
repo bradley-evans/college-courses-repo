@@ -1,0 +1,37 @@
+From Bradley Evans:
+
+Because Lab 1 and 2 were prepared largely together, the following is a repeat
+of the report submitted for Lab 1. All of this accurately applies to both
+projects.
+
+Much of the challenge in completing this project was learning the new, specific
+syntax needed by the Atmel software. Much of the time spent working on this was
+downloading, installing, configuring, and familiarizing ourselves with the IDE.
+After this, it was a matter of learning the syntax used by the ATMega32 device,
+especially what built-in variables are pointing to (PORTA vs PINA, when to use
+each, how to describe a specific bit in the 8-bit inputs and outputs, etc). My
+partner was able to get up and running much more quickly than I was able to, so
+he was much more helpful to me than I was to him. Once setup was done, the code
+was actually very easy to implement, so we both collaborated on when to use
+different approaches to the code (if we should use a ternery operator here or
+an if statement there, for example).
+
+Bradd Carey also established a github repo for us to collaborate more
+efficiently, which will greatly enhance our ability to work together.
+
+From Braddley Carey:
+
+The project was just familiarizing ourselves with the program and lab structure.
+Learning C from C++ was an easy task and only required a small amount of research.
+After a small amount of practice with C and a bit of collaboration on a coding
+format (so that our code would appear consistent and easy to troubleshoot
+by the other partner) we dove into the problems.  No major issues were 
+encountered in this lab, although some interesting concepts encountered with 
+perserving and initializing ports that had both inputs and outputs.  It was more 
+or less copy and paste from the examples and trying to establish patterns.  
+
+Evans set up a collaborative Cloud 9 IDE to connect my github repo so we could 
+code more effectively as a team.  On Wednesday the TA was only able to get
+through six groups for demoing before the end of the lab time, so our goal
+is to stay a lab ahead of the class so we can demo ASAP, instead of being far
+down on the list and having to go to office hours to demo.

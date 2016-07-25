@@ -1,0 +1,212 @@
+
+bcare001_lab1_part4.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000fa  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000014e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  0000014e  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000180  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  000001bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000000b5  00000000  00000000  000001dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000062  00000000  00000000  00000291  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000000ba  00000000  00000000  000002f3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000024  00000000  00000000  000003b0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000165  00000000  00000000  000003d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000008d  00000000  00000000  00000539  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  000005c6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 36 00 	call	0x6c	; 0x6c <main>
+  64:	0c 94 7b 00 	jmp	0xf6	; 0xf6 <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <main>:
+#include <avr/io.h>
+
+int main(void)
+{
+	//Configure Ports
+	DDRA = 0x00;
+  6c:	1a ba       	out	0x1a, r1	; 26
+	DDRB = 0x00;
+  6e:	17 ba       	out	0x17, r1	; 23
+	DDRC = 0x00;
+  70:	14 ba       	out	0x14, r1	; 20
+	DDRD = 0xFF;
+  72:	8f ef       	ldi	r24, 0xFF	; 255
+  74:	81 bb       	out	0x11, r24	; 17
+	//Initialize outputs to 0
+	PORTA = 0x00; 
+  76:	1b ba       	out	0x1b, r1	; 27
+	PORTB = 0x00;
+  78:	18 ba       	out	0x18, r1	; 24
+	PORTC = 0x00;
+  7a:	15 ba       	out	0x15, r1	; 21
+	//Initialize inputs to 0
+	PORTD = 0x00; 
+  7c:	12 ba       	out	0x12, r1	; 18
+		shift = 0;
+		tempD = 0x00;
+	//Total weight
+		total_weight = PINA + PINB + PINC;
+		//if total weight is greater than 140kg set PD0==1
+		if(total_weight > 140){
+  7e:	71 e0       	ldi	r23, 0x01	; 1
+  80:	60 e0       	ldi	r22, 0x00	; 0
+	
+    while (1){
+		shift = 0;
+		tempD = 0x00;
+	//Total weight
+		total_weight = PINA + PINB + PINC;
+  82:	39 b3       	in	r19, 0x19	; 25
+  84:	86 b3       	in	r24, 0x16	; 22
+  86:	23 b3       	in	r18, 0x13	; 19
+  88:	90 e0       	ldi	r25, 0x00	; 0
+  8a:	83 0f       	add	r24, r19
+  8c:	91 1d       	adc	r25, r1
+  8e:	82 0f       	add	r24, r18
+  90:	91 1d       	adc	r25, r1
+		//if total weight is greater than 140kg set PD0==1
+		if(total_weight > 140){
+  92:	27 2f       	mov	r18, r23
+  94:	8d 38       	cpi	r24, 0x8D	; 141
+  96:	91 05       	cpc	r25, r1
+  98:	08 f4       	brcc	.+2      	; 0x9c <main+0x30>
+  9a:	26 2f       	mov	r18, r22
+		}else{
+			tempD = (tempD & 0xFE);
+		}
+	//Unbalanced
+		//if difference in weight between r1 and r3 > 80 set PD1==1
+		if((PINA-PINC)>80 || (PINC-PINA)>80){
+  9c:	49 b3       	in	r20, 0x19	; 25
+  9e:	33 b3       	in	r19, 0x13	; 19
+  a0:	50 e0       	ldi	r21, 0x00	; 0
+  a2:	43 1b       	sub	r20, r19
+  a4:	51 09       	sbc	r21, r1
+  a6:	41 35       	cpi	r20, 0x51	; 81
+  a8:	51 05       	cpc	r21, r1
+  aa:	44 f4       	brge	.+16     	; 0xbc <main+0x50>
+  ac:	43 b3       	in	r20, 0x13	; 19
+  ae:	39 b3       	in	r19, 0x19	; 25
+  b0:	50 e0       	ldi	r21, 0x00	; 0
+  b2:	43 1b       	sub	r20, r19
+  b4:	51 09       	sbc	r21, r1
+  b6:	41 35       	cpi	r20, 0x51	; 81
+  b8:	51 05       	cpc	r21, r1
+  ba:	3c f0       	brlt	.+14     	; 0xca <main+0x5e>
+			tempD = (tempD & 0xFD) | (0x01<<1);	
+  bc:	32 2f       	mov	r19, r18
+  be:	32 60       	ori	r19, 0x02	; 2
+		}else{
+			tempD = (tempD & 0xFD);			
+		}
+	//Estimate weight
+		while(total_weight>0x07){
+  c0:	88 30       	cpi	r24, 0x08	; 8
+  c2:	91 05       	cpc	r25, r1
+  c4:	28 f4       	brcc	.+10     	; 0xd0 <main+0x64>
+  c6:	26 2f       	mov	r18, r22
+  c8:	0a c0       	rjmp	.+20     	; 0xde <main+0x72>
+	//Unbalanced
+		//if difference in weight between r1 and r3 > 80 set PD1==1
+		if((PINA-PINC)>80 || (PINC-PINA)>80){
+			tempD = (tempD & 0xFD) | (0x01<<1);	
+		}else{
+			tempD = (tempD & 0xFD);			
+  ca:	32 2f       	mov	r19, r18
+  cc:	3d 7f       	andi	r19, 0xFD	; 253
+  ce:	f8 cf       	rjmp	.-16     	; 0xc0 <main+0x54>
+		}
+	//Estimate weight
+		while(total_weight>0x07){
+  d0:	26 2f       	mov	r18, r22
+			total_weight = total_weight>>1;
+  d2:	96 95       	lsr	r25
+  d4:	87 95       	ror	r24
+			shift++;	
+  d6:	2f 5f       	subi	r18, 0xFF	; 255
+			tempD = (tempD & 0xFD) | (0x01<<1);	
+		}else{
+			tempD = (tempD & 0xFD);			
+		}
+	//Estimate weight
+		while(total_weight>0x07){
+  d8:	88 30       	cpi	r24, 0x08	; 8
+  da:	91 05       	cpc	r25, r1
+  dc:	d0 f7       	brcc	.-12     	; 0xd2 <main+0x66>
+			total_weight = total_weight>>1;
+			shift++;	
+		}
+		//set shift
+		tempD = (tempD & 0xE3) | (shift<<2);
+  de:	22 0f       	add	r18, r18
+  e0:	22 0f       	add	r18, r18
+  e2:	93 2f       	mov	r25, r19
+  e4:	93 7e       	andi	r25, 0xE3	; 227
+  e6:	29 2b       	or	r18, r25
+		//set weight estimate
+		tempD = (tempD & 0x1F) | (total_weight<<5);
+  e8:	2f 71       	andi	r18, 0x1F	; 31
+  ea:	82 95       	swap	r24
+  ec:	88 0f       	add	r24, r24
+  ee:	80 7e       	andi	r24, 0xE0	; 224
+  f0:	82 2b       	or	r24, r18
+	//Set PD7-PD0
+		PORTD = tempD;
+  f2:	82 bb       	out	0x12, r24	; 18
+    }
+  f4:	c6 cf       	rjmp	.-116    	; 0x82 <main+0x16>
+
+000000f6 <_exit>:
+  f6:	f8 94       	cli
+
+000000f8 <__stop_program>:
+  f8:	ff cf       	rjmp	.-2      	; 0xf8 <__stop_program>

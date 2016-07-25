@@ -1,0 +1,18 @@
+From Bradley Evans:
+
+Lab 9 was straightforward because the periods lined up nicely. Originally,
+I was operating in a single tick() with multiple switch statements, but
+better encapsulated each state machine by challenge 3 by giving each state
+machine its own function. Challenge 3 was a matter of making sure variables
+appeared in a particular order in code, such that the "pulse flag" from each
+button would actuate a later counter statement exactly once per cycle.
+
+From Braddley Carey:
+
+The idea of the concurrent SM greatly simplifies the building of the more
+annoying to build SMs (PMW and ADC) come to mind.  The concept isn't
+particularly difficult and we could have saved quite a few headaches by
+learning this techinique _before_ going into PMWs.  This would also allow
+us to make a challenging ADC because Lab 8's challenge was kind of a joke.
+I would have like to use concurrent SMs to manage multiple ADCs
+simultaneously.

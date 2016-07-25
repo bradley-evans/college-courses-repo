@@ -1,0 +1,21 @@
+digraph G {
+""[ label = ""];
+"Pirates of the Caribbean"[ label = "Pirates of the Caribbean"];
+"" ->  "Pirates of the Caribbean";
+"Spaceballs"[ label = "Spaceballs"];
+"Die Hard, Kill Bill Volume 1"[ label = "Die Hard, Kill Bill Volume 1"];
+"Aliens, Clerks"[ label = "Aliens, Clerks"];
+"Die Hard, Kill Bill Volume 1" ->  "Aliens, Clerks";
+"Enemy of the State, Gladiator"[ label = "Enemy of the State, Gladiator"];
+"Die Hard, Kill Bill Volume 1" ->  "Enemy of the State, Gladiator";
+"Matrix"[ label = "Matrix"];
+"Die Hard, Kill Bill Volume 1" ->  "Matrix";
+"Spaceballs" ->  "Die Hard, Kill Bill Volume 1";
+"Terminator"[ label = "Terminator"];
+"Silence of the Lambs, Star Wars"[ label = "Silence of the Lambs, Star Wars"];
+"Terminator" ->  "Silence of the Lambs, Star Wars";
+"The Lord of the Rings, The Usual Suspects"[ label = "The Lord of the Rings, The Usual Suspects"];
+"Terminator" ->  "The Lord of the Rings, The Usual Suspects";
+"Spaceballs" ->  "Terminator";
+"" ->  "Spaceballs";
+}

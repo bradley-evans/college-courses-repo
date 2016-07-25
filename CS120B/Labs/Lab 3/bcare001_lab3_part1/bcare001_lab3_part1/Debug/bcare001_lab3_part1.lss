@@ -1,0 +1,264 @@
+
+bcare001_lab3_part1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000134  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000001a8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000002  00800060  00800060  000001a8  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000001a8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001d8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000038  00000000  00000000  00000214  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000257  00000000  00000000  0000024c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000010e  00000000  00000000  000004a3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000116  00000000  00000000  000005b1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000054  00000000  00000000  000006c8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000001bc  00000000  00000000  0000071c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000137  00000000  00000000  000008d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000028  00000000  00000000  00000a0f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a2 36       	cpi	r26, 0x62	; 98
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 88 00 	call	0x110	; 0x110 <main>
+  74:	0c 94 98 00 	jmp	0x130	; 0x130 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <TickFct_led_latch>:
+unsigned char tempB;
+
+enum LED_States { LED_init, LED_wait1, LED_led2_on, LED_wait2, LED_led1_on } LED_State;
+
+void TickFct_led_latch() {
+	switch(LED_State) { // Transitions
+  7c:	80 91 61 00 	lds	r24, 0x0061
+  80:	82 30       	cpi	r24, 0x02	; 2
+  82:	b9 f0       	breq	.+46     	; 0xb2 <TickFct_led_latch+0x36>
+  84:	28 f4       	brcc	.+10     	; 0x90 <TickFct_led_latch+0x14>
+  86:	88 23       	and	r24, r24
+  88:	41 f0       	breq	.+16     	; 0x9a <TickFct_led_latch+0x1e>
+  8a:	81 30       	cpi	r24, 0x01	; 1
+  8c:	51 f0       	breq	.+20     	; 0xa2 <TickFct_led_latch+0x26>
+  8e:	29 c0       	rjmp	.+82     	; 0xe2 <TickFct_led_latch+0x66>
+  90:	83 30       	cpi	r24, 0x03	; 3
+  92:	b9 f0       	breq	.+46     	; 0xc2 <TickFct_led_latch+0x46>
+  94:	84 30       	cpi	r24, 0x04	; 4
+  96:	e9 f0       	breq	.+58     	; 0xd2 <TickFct_led_latch+0x56>
+  98:	24 c0       	rjmp	.+72     	; 0xe2 <TickFct_led_latch+0x66>
+		case LED_init:
+			if (1) {
+				LED_State = LED_wait1;
+  9a:	81 e0       	ldi	r24, 0x01	; 1
+  9c:	80 93 61 00 	sts	0x0061, r24
+			}
+			break;
+  a0:	08 95       	ret
+		case LED_wait1:
+			if (getBit(PINA,0)) {
+  a2:	c8 9b       	sbis	0x19, 0	; 25
+  a4:	04 c0       	rjmp	.+8      	; 0xae <TickFct_led_latch+0x32>
+				LED_State = LED_led2_on;
+  a6:	82 e0       	ldi	r24, 0x02	; 2
+  a8:	80 93 61 00 	sts	0x0061, r24
+  ac:	23 c0       	rjmp	.+70     	; 0xf4 <TickFct_led_latch+0x78>
+			}
+			else if (!getBit(PINA,0)) {
+  ae:	89 b3       	in	r24, 0x19	; 25
+  b0:	08 95       	ret
+				LED_State = LED_wait1;
+			}
+			break;
+		case LED_led2_on:
+			if (!getBit(PINA,0)) {
+  b2:	c8 99       	sbic	0x19, 0	; 25
+  b4:	04 c0       	rjmp	.+8      	; 0xbe <TickFct_led_latch+0x42>
+				LED_State = LED_wait2;
+  b6:	83 e0       	ldi	r24, 0x03	; 3
+  b8:	80 93 61 00 	sts	0x0061, r24
+  bc:	08 95       	ret
+			}
+			else if (getBit(PINA,0)) {
+  be:	89 b3       	in	r24, 0x19	; 25
+  c0:	19 c0       	rjmp	.+50     	; 0xf4 <TickFct_led_latch+0x78>
+				LED_State = LED_led2_on;
+			}
+			break;
+		case LED_wait2:
+			if (getBit(PINA,0)) {
+  c2:	c8 9b       	sbis	0x19, 0	; 25
+  c4:	04 c0       	rjmp	.+8      	; 0xce <TickFct_led_latch+0x52>
+				LED_State = LED_led1_on;
+  c6:	84 e0       	ldi	r24, 0x04	; 4
+  c8:	80 93 61 00 	sts	0x0061, r24
+  cc:	1a c0       	rjmp	.+52     	; 0x102 <TickFct_led_latch+0x86>
+			}
+			else if (!getBit(PINA,0)) {
+  ce:	89 b3       	in	r24, 0x19	; 25
+  d0:	08 95       	ret
+				LED_State = LED_wait2;
+			}
+			break;
+		case LED_led1_on:
+			if (getBit(PINA,0)) {
+  d2:	c8 99       	sbic	0x19, 0	; 25
+  d4:	16 c0       	rjmp	.+44     	; 0x102 <TickFct_led_latch+0x86>
+				LED_State = LED_led1_on;
+			}
+			else if (!getBit(PINA,0)) {
+  d6:	c8 99       	sbic	0x19, 0	; 25
+  d8:	14 c0       	rjmp	.+40     	; 0x102 <TickFct_led_latch+0x86>
+				LED_State = LED_wait1;
+  da:	81 e0       	ldi	r24, 0x01	; 1
+  dc:	80 93 61 00 	sts	0x0061, r24
+  e0:	08 95       	ret
+			}
+			break;
+		default:
+			LED_State = LED_init;
+  e2:	10 92 61 00 	sts	0x0061, r1
+
+#include <avr/io.h>
+
+//Function Definitions
+unsigned char setBit(unsigned char x, unsigned char k, unsigned char b){
+	return (b ? x | (0x01 << k) : x & ~(0x01 << k));
+  e6:	80 91 60 00 	lds	r24, 0x0060
+  ea:	8d 7f       	andi	r24, 0xFD	; 253
+  ec:	81 60       	ori	r24, 0x01	; 1
+	} // Transitions
+
+	switch(LED_State) { // State actions
+		case LED_init:
+			tempB = setBit(tempB,0,1);
+			tempB = setBit(tempB,1,0);
+  ee:	80 93 60 00 	sts	0x0060, r24
+			break;
+  f2:	08 95       	ret
+
+#include <avr/io.h>
+
+//Function Definitions
+unsigned char setBit(unsigned char x, unsigned char k, unsigned char b){
+	return (b ? x | (0x01 << k) : x & ~(0x01 << k));
+  f4:	80 91 60 00 	lds	r24, 0x0060
+  f8:	8e 7f       	andi	r24, 0xFE	; 254
+  fa:	82 60       	ori	r24, 0x02	; 2
+			break;
+		case LED_wait1:
+			break;
+		case LED_led2_on:
+			tempB = setBit(tempB,0,0);
+			tempB = setBit(tempB,1,1);
+  fc:	80 93 60 00 	sts	0x0060, r24
+			break;
+ 100:	08 95       	ret
+
+#include <avr/io.h>
+
+//Function Definitions
+unsigned char setBit(unsigned char x, unsigned char k, unsigned char b){
+	return (b ? x | (0x01 << k) : x & ~(0x01 << k));
+ 102:	80 91 60 00 	lds	r24, 0x0060
+ 106:	8d 7f       	andi	r24, 0xFD	; 253
+ 108:	81 60       	ori	r24, 0x01	; 1
+			break;
+		case LED_wait2:
+			break;
+		case LED_led1_on:
+			tempB = setBit(tempB,0,1);
+			tempB = setBit(tempB,1,0);
+ 10a:	80 93 60 00 	sts	0x0060, r24
+ 10e:	08 95       	ret
+
+00000110 <main>:
+	} // State actions
+
+}
+
+int main() {
+	DDRA = 0x00;
+ 110:	1a ba       	out	0x1a, r1	; 26
+	DDRB = 0xFF;
+ 112:	8f ef       	ldi	r24, 0xFF	; 255
+ 114:	87 bb       	out	0x17, r24	; 23
+	PORTA = 0x00;
+ 116:	1b ba       	out	0x1b, r1	; 27
+	PORTB = 0x00;
+ 118:	18 ba       	out	0x18, r1	; 24
+	LED_State = LED_init; // Initial state
+ 11a:	10 92 61 00 	sts	0x0061, r1
+	tempB = 0x01; // Initial outputs
+ 11e:	81 e0       	ldi	r24, 0x01	; 1
+ 120:	80 93 60 00 	sts	0x0060, r24
+	while(1) {
+		TickFct_led_latch();
+ 124:	0e 94 3e 00 	call	0x7c	; 0x7c <TickFct_led_latch>
+		PORTB = tempB;
+ 128:	80 91 60 00 	lds	r24, 0x0060
+ 12c:	88 bb       	out	0x18, r24	; 24
+	}
+ 12e:	fa cf       	rjmp	.-12     	; 0x124 <main+0x14>
+
+00000130 <_exit>:
+ 130:	f8 94       	cli
+
+00000132 <__stop_program>:
+ 132:	ff cf       	rjmp	.-2      	; 0x132 <__stop_program>

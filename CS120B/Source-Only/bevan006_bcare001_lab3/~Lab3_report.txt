@@ -1,0 +1,21 @@
+From Bradley Evans:
+
+Lab 3 was about reviewing finite state machines and learning about how they are
+implemented in RIMS. The most difficult portion was likely learning how the
+software took in our FSM and translates it into useable C.
+
+The project was very simple, so there wasn't much of a way to divide up labor
+effectively. Both of us wrote code independently and offered code snippets for
+the other to use, however, Bradd did produce most of the code presented here in
+this submission.
+
+From Braddley Carey:
+We wrote RIMS and simulated both part 1 and part 3 for practice.  I found RIMS a
+bit confusing initially, but fairly intuitive after a bit of testing.  Both 
+of the RIMS for part 1 and 3 are included.
+
+I originally tried to jump the gun and program these out before we were taught
+the double switch method in class and part 5 became very confusing and spaghetti
+like.  After reprogramming each part in the method described in class I gained
+a great respect for the organizational method of the double switch statements
+for transitioning and state defined functions.
