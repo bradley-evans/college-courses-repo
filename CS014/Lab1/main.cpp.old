@@ -1,0 +1,386 @@
+// Jason Zellmer
+// Bradley Evans
+
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include <list>
+
+using namespace std;
+
+#include "Character.h"
+#include "Warrior.h"
+#include "Elf.h"
+#include "Wizard.h"
+#include "evans_functions.h"
+
+/*
+enum CharType {WARRIOR, ELF, WIZARD};
+
+class Character {
+ protected:
+    CharType type;
+    string name;
+    double health;
+    double attackStrength;
+*/
+
+// const double MAX_HEALTH = 100.0;
+
+int main() {
+    
+    srand(time(0));
+
+    list<Character *> adventurers;
+    
+    // new lists for each player
+    list<Character *> player1;
+    list<Character *> player2;
+    
+    adventurers.push_back(new Warrior("Arthur", MAX_HEALTH, 5, "King George"));
+    adventurers.push_back(new Elf("Raegron", MAX_HEALTH, 4, "Sylvarian"));
+    player1.push_back(new Wizard("Merlin", MAX_HEALTH, 5, 10));
+    player1.push_back(new Elf("Cereasstar", MAX_HEALTH, 3, "Sylvarian"));
+    player2.push_back(new Elf("Melimion", MAX_HEALTH, 4, "Valinorian"));
+    player2.push_back(new Warrior("Jane", MAX_HEALTH, 6, "King George"));
+    adventurers.push_back(new Warrior("Paul", MAX_HEALTH, 4, "Donald Trump"));
+    adventurers.push_back(new Elf("Funny Elf Name", MAX_HEALTH, 4, "Bernie Sanders"));
+    adventurers.push_back(new Wizard("Adali", MAX_HEALTH, 5, 8));
+    adventurers.push_back(new Wizard("Vrydore", MAX_HEALTH, 4, 6));
+    adventurers.push_back(new Wizard("Wizardman", MAX_HEALTH, 4, 6));
+    
+
+
+
+    
+    for (list<Character *>::iterator it = adventurers.begin(); it != adventurers.end(); ++it) {
+        // cout << "*it: " << *it << endl;
+        cout << "type: " << (*it)->getType() << endl;
+    }
+
+    // unsigned numAttacks = 10 + rand() % 11;
+    // unsigned attacker, defender;
+    
+    
+    for (list<int>::iterator it = adventurers.begin(); it < adventurers.end(); ++it) {
+        // attacker = rand() % adventurers.size();
+        // do {
+        //     defender = rand() % adventurers.size();
+        // } while (defender == attacker);
+        
+        (*it)->attack
+
+        adventurers.at(attacker)->attack(*adventurers.at(defender));
+        
+        cout << endl;
+    }
+    
+    
+    // cout << "-----Health Remaining-----" << endl;
+    // for (unsigned i = 0; i < adventurers.size(); ++i) {
+    //     cout << adventurers.at(i)->getName() << ": " 
+    //         << adventurers.at(i)->getHealth() << endl;
+    // }
+
+
+
+
+
+
+    // unsigned numAttacks = 10 + rand() % 11;
+    // unsigned attacker, defender;
+    
+    
+    // for (unsigned i = 0; i < numAttacks; ++i) {
+    //     attacker = rand() % adventurers.size();
+    //     do {
+    //         defender = rand() % adventurers.size();
+    //     } while (defender == attacker);
+
+    //     adventurers.at(attacker)->attack(*adventurers.at(defender));
+    //     cout << endl;
+    // }
+    // cout << "-----Health Remaining-----" << endl;
+    // for (unsigned i = 0; i < adventurers.size(); ++i) {
+    //     cout << adventurers.at(i)->getName() << ": " 
+    //         << adventurers.at(i)->getHealth() << endl;
+    // }
+
+    return 0;
+    
+
+/////////////////////////////////////////////////////////////////////////////
+//////////////// Character ///////////////////
+    
+    // Character player1;
+    // cout << endl << "Player 1: " << endl;
+    // cout << "player1 type: " << player1.getType() << endl;
+    // cout << "player1 name: " << player1.getName() << endl;
+    // cout << "player1 health: " << player1.getHealth() << endl;
+    // cout << "player1 alive?: " << player1.isAlive()<< endl;
+    // cout << "setting player1 health to 79.8" << endl;
+    // player1.setHealth(79.8);
+    // cout << "player1 health: " << player1.getHealth() << endl;
+    // cout << "player1 alive?: " << player1.isAlive()<< endl;
+    
+    // Character player2 = Character("Spider Man", 80.6, 2.5);
+    // cout << endl << "Player 2: " << endl;
+    // cout << "player2 type: " << player2.getType() << endl;
+    // cout << "player2 name: " << player2.getName() << endl;
+    // cout << "player2 health: " << player2.getHealth() << endl;
+    // cout << "player2 alive?: " << player2.isAlive()<< endl;
+
+/////////////////////////////////////////////////////////////////////////////
+//////////////// Warrior ///////////////////
+
+    // Warrior player1;
+    
+    // cout << endl << "Player 1: " << endl;
+    // cout << "player1 type: " << player1.getType() << endl;
+    // cout << "player1 name: " << player1.getName() << endl;
+    // cout << "player1 health: " << player1.getHealth() << endl;
+    // cout << "player1 alive?: " << player1.isAlive()<< endl;
+    // cout << "setting player1 health to 79.8" << endl;
+    // player1.setHealth(79.8);
+    // cout << "player1 health: " << player1.getHealth() << endl;
+    // cout << "player1 alive?: " << player1.isAlive()<< endl;
+    // cout << "player1 allegiance: " << player1.getAllegiance() << endl;
+    // cout << "setting player1 allegiance to Great Scott" << endl;
+    // player1.setAllegiance("Great Scott");
+    // cout << "player1 allegiance: " << player1.getAllegiance() << endl;
+    
+    // cout << "Testing Warriors of same allegiance: " << endl;
+    // Warrior player2 = Warrior("Arthur", 80.6, 2.5, "King James");
+    // cout << endl << "Player 2: " << endl;
+    // cout << "player2 type: " << player2.getType() << endl;
+    // cout << "player2 name: " << player2.getName() << endl;
+    // cout << "player2 health: " << player2.getHealth() << endl;
+    // cout << "player2 alive?: " << player2.isAlive()<< endl;
+    // cout << "player2 allegiance: " << player2.getAllegiance() << endl;
+    
+    // Warrior player3 = Warrior("Jane", 100, 4, "King James");
+    // cout << endl << "Player 3: " << endl;
+    // cout << "player3 type: " << player3.getType() << endl;
+    // cout << "player3 name: " << player3.getName() << endl;
+    // cout << "player3 health: " << player3.getHealth() << endl;
+    // cout << "player3 alive?: " << player3.isAlive()<< endl;
+    // cout << "player3 allegiance: " << player3.getAllegiance() << endl;
+    
+    // cout << "Testing Warriors of different allegiance: " << endl;
+    // Warrior player2 = Warrior("Arthur", 80.6, 2.5, "King George");
+    // cout << endl << "Player 2: " << endl;
+    // cout << "player2 type: " << player2.getType() << endl;
+    // cout << "player2 name: " << player2.getName() << endl;
+    // cout << "player2 health: " << player2.getHealth() << endl;
+    // cout << "player2 alive?: " << player2.isAlive()<< endl;
+    // cout << "player2 allegiance: " << player2.getAllegiance() << endl;
+    
+    // Warrior player3 = Warrior("Bob", 100, 4, "King James");
+    // cout << endl << "Player 3: " << endl;
+    // cout << "player3 type: " << player3.getType() << endl;
+    // cout << "player3 name: " << player3.getName() << endl;
+    // cout << "player3 health: " << player3.getHealth() << endl;
+    // cout << "player3 alive?: " << player3.isAlive()<< endl;
+    // cout << "player3 allegiance: " << player3.getAllegiance() << endl;
+    
+    // cout << "player3 attacks player 2." << endl;
+    // player3.attack(player2);
+    // cout << endl << "player2 health: " << player2.getHealth() << endl;
+    
+    // cout << "Testing Warrior attacking non-warrior: " << endl;
+    // Wizard player2 = Wizard("Arthur", 80.6, 2.5, 2);
+    // cout << endl << "Player 2: " << endl;
+    // cout << "player2 type: " << player2.getType() << endl;
+    // cout << "player2 name: " << player2.getName() << endl;
+    // cout << "player2 health: " << player2.getHealth() << endl;
+    // cout << "player2 alive?: " << player2.isAlive()<< endl;
+    // cout << "player2 rank: " << player2.getRank() << endl;
+    
+    // Warrior player3 = Warrior("Bob", 100, 4, "King James");
+    // cout << endl << "Player 3: " << endl;
+    // cout << "player3 type: " << player3.getType() << endl;
+    // cout << "player3 name: " << player3.getName() << endl;
+    // cout << "player3 health: " << player3.getHealth() << endl;
+    // cout << "player3 alive?: " << player3.isAlive()<< endl;
+    // cout << "player3 allegiance: " << player3.getAllegiance() << endl;
+    
+    // cout << "player3 attacks player 2." << endl;
+    // player3.attack(player2);
+    // cout << endl << "player2 health: " << player2.getHealth() << endl;
+    
+/////////////////////////////////////////////////////////////////////////////
+//////////////// Elf ///////////////////
+
+    // Elf player1;
+    
+    // cout << endl << "Player 1: " << endl;
+    // cout << "player1 type: " << player1.getType() << endl;
+    // cout << "player1 name: " << player1.getName() << endl;
+    // cout << "player1 health: " << player1.getHealth() << endl;
+    // cout << "player1 alive?: " << player1.isAlive()<< endl;
+    // cout << "setting player1 health to 79.8" << endl;
+    // player1.setHealth(79.8);
+    // cout << "player1 health: " << player1.getHealth() << endl;
+    // cout << "player1 alive?: " << player1.isAlive()<< endl;
+    // cout << "player1 surname: " << player1.getSurname() << endl;
+    // cout << "setting player1 surname to Johnson" << endl;
+    // player1.setSurname("Johnson");
+    // cout << "player1 surname: " << player1.getSurname() << endl;
+    
+    // cout << "Testing Elf's of the same family name: " << endl;
+    // Elf player2 = Elf("Cereasstar", 80.6, 2.5, "Fredrickson");
+    // cout << endl << "Player 2: " << endl;
+    // cout << "player2 type: " << player2.getType() << endl;
+    // cout << "player2 name: " << player2.getName() << endl;
+    // cout << "player2 health: " << player2.getHealth() << endl;
+    // cout << "player2 alive?: " << player2.isAlive()<< endl;
+    // cout << "player2 surname: " << player2.getSurname() << endl;
+    
+    // Elf player3 = Elf("Raegron", 100, 4, "Fredrickson");
+    // cout << endl << "Player 3: " << endl;
+    // cout << "player3 type: " << player3.getType() << endl;
+    // cout << "player3 name: " << player3.getName() << endl;
+    // cout << "player3 health: " << player3.getHealth() << endl;
+    // cout << "player3 alive?: " << player3.isAlive()<< endl;
+    // cout << "player3 surname: " << player3.getSurname() << endl;
+    
+    // cout << "player3 attacks player 2." << endl;
+    // player3.attack(player2);
+    // cout << endl << "player2 health: " << player2.getHealth() << endl;
+    
+    // cout << "Testing Elf's of the different family name: " << endl;
+    // Elf player2 = Elf("Cereasstar", 80.6, 2.5, "Johnson");
+    // cout << endl << "Player 2: " << endl;
+    // cout << "player2 type: " << player2.getType() << endl;
+    // cout << "player2 name: " << player2.getName() << endl;
+    // cout << "player2 health: " << player2.getHealth() << endl;
+    // cout << "player2 alive?: " << player2.isAlive()<< endl;
+    // cout << "player2 surname: " << player2.getSurname() << endl;
+    
+    // Elf player3 = Elf("Raegron", 100, 4, "Fredrickson");
+    // cout << endl << "Player 3: " << endl;
+    // cout << "player3 type: " << player3.getType() << endl;
+    // cout << "player3 name: " << player3.getName() << endl;
+    // cout << "player3 health: " << player3.getHealth() << endl;
+    // cout << "player3 alive?: " << player3.isAlive()<< endl;
+    // cout << "player3 surname: " << player3.getSurname() << endl;
+    
+    // cout << "player3 attacks player 2." << endl;
+    // player3.attack(player2);
+    // cout << endl << "player2 health: " << player2.getHealth() << endl;
+    
+    // cout << "Testing Elf attacking non-Elf: " << endl;
+    // Warrior player2 = Warrior("Arthur", 80.6, 2.5, "King James");
+    // cout << endl << "Player 2: " << endl;
+    // cout << "player2 type: " << player2.getType() << endl;
+    // cout << "player2 name: " << player2.getName() << endl;
+    // cout << "player2 health: " << player2.getHealth() << endl;
+    // cout << "player2 alive?: " << player2.isAlive()<< endl;
+    // cout << "player2 allegiance: " << player2.getAllegiance() << endl;
+    
+    // Elf player3 = Elf("Raegron", 100, 4, "Fredrickson");
+    // cout << endl << "Player 3: " << endl;
+    // cout << "player3 type: " << player3.getType() << endl;
+    // cout << "player3 name: " << player3.getName() << endl;
+    // cout << "player3 health: " << player3.getHealth() << endl;
+    // cout << "player3 alive?: " << player3.isAlive()<< endl;
+    // cout << "player3 surname: " << player3.getSurname() << endl;
+    
+    // cout << "player3 attacks player 2." << endl;
+    // player3.attack(player2);
+    // cout << endl << "player2 health: " << player2.getHealth() << endl;
+    
+
+/////////////////////////////////////////////////////////////////////////////
+//////////////// Wizard ///////////////////
+
+    // Wizard player1;
+    
+    // cout << endl << "Player 1: " << endl;
+    // cout << "player1 type: " << player1.getType() << endl;
+    // cout << "player1 name: " << player1.getName() << endl;
+    // cout << "player1 health: " << player1.getHealth() << endl;
+    // cout << "player1 alive?: " << player1.isAlive()<< endl;
+    // cout << "setting player1 health to 79.8" << endl;
+    // player1.setHealth(79.8);
+    // cout << "player1 health: " << player1.getHealth() << endl;
+    // cout << "player1 alive?: " << player1.isAlive()<< endl;
+    // cout << "player1 rank: " << player1.getRank() << endl;
+    // cout << "setting player1 rank to 10" << endl;
+    // player1.setRank(10);
+    // cout << "player1 rank: " << player1.getRank() << endl;
+    
+    // cout << "Testing a wizard attacking a wizard: " << endl;
+    // Wizard player2 = Wizard("Adali", 80.6, 2.5, 2);
+    // cout << endl << "Player 2: " << endl;
+    // cout << "player2 type: " << player2.getType() << endl;
+    // cout << "player2 name: " << player2.getName() << endl;
+    // cout << "player2 health: " << player2.getHealth() << endl;
+    // cout << "player2 alive?: " << player2.isAlive()<< endl;
+    // cout << "player2 rank: " << player2.getRank() << endl;
+    
+    // Wizard player3 = Wizard("Merlin", 100, 4, 7);
+    // cout << endl << "Player 3: " << endl;
+    // cout << "player3 type: " << player3.getType() << endl;
+    // cout << "player3 name: " << player3.getName() << endl;
+    // cout << "player3 health: " << player3.getHealth() << endl;
+    // cout << "player3 alive?: " << player3.isAlive()<< endl;
+    // cout << "player3 rank: " << player3.getRank() << endl;
+    
+    // cout << "player3 attacks player 2." << endl;
+    // player3.attack(player2);
+    // cout << endl << "player2 health: " << player2.getHealth() << endl;
+    
+    // cout << "Testing a wizard attacking a non-wizard: " << endl;
+    // Wizard player2 = Wizard("Adali", 80.6, 2.5, 2);
+    // cout << endl << "Player 2: " << endl;
+    // cout << "player2 type: " << player2.getType() << endl;
+    // cout << "player2 name: " << player2.getName() << endl;
+    // cout << "player2 health: " << player2.getHealth() << endl;
+    // cout << "player2 alive?: " << player2.isAlive()<< endl;
+    // cout << "player2 rank: " << player2.getRank() << endl;
+    
+    // Elf player3 = Elf("Merlin", 100, 4, "Johnson");
+    // cout << endl << "Player 3: " << endl;
+    // cout << "player3 type: " << player3.getType() << endl;
+    // cout << "player3 name: " << player3.getName() << endl;
+    // cout << "player3 health: " << player3.getHealth() << endl;
+    // cout << "player3 alive?: " << player3.isAlive()<< endl;
+    // cout << "player3 surname: " << player3.getSurname() << endl;
+    
+    // cout << "player3 attacks player 2." << endl;
+    // player3.attack(player2);
+    // cout << endl << "player2 health: " << player2.getHealth() << endl;
+
+    
+/////////////////////////////////////////////////////////////////////////////
+    
+
+    // Warrior w1("Arthur", 100, 5, "King George");
+    // Warrior w2("Jane", 100, 6, "King George");
+    // Warrior w3("Bob", 100, 4, "Queen Emily");
+    // Elf e1("Raegron", 100, 4, "Sylvarian");
+    // Elf e2("Cereasstar", 100, 3, "Sylvarian");
+    // Elf e3("Melimion", 100, 4, "Valinorian");
+    // Wizard wz1("Merlin", 100, 5, 10);
+    // Wizard wz2("Adali", 100, 5, 8);
+    // Wizard wz3("Vrydore", 100, 4, 6);
+    // e1.attack(w1);
+    // cout << endl;
+    // e1.attack(e2);
+    // cout << endl;
+    // w2.attack(w1);
+    // cout << endl;
+    // w3.attack(w1);
+    // cout << endl;
+    // wz1.attack(wz2);
+    // cout << endl;
+    // wz1.attack(wz3);
+    // cout << endl;
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////
+
+}
