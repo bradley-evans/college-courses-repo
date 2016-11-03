@@ -29,7 +29,7 @@ void LED_init(){
 void LED_Tick(){
     //Actions
     switch(LED_state){
-        case LED_INIT:
+        case LED_INIT:x
         lights = 1;
         break;
         case LED_INC:
