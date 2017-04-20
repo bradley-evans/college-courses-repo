@@ -30,7 +30,8 @@
 /* GLOBAL VARIABLES */
 unsigned char data;             // stores actual data for transmission
 unsigned char speed = '0', pattern = '0';   // stores speed, pattern information
-unsigned char lcd_output[32] = " Speed:   [ ]    Pattern: [ ]   ";
+unsigned char lcd_waiting[32] = "Waiting...                      ";
+unsigned char lcd_running[32] = "Running...                      ";
 unsigned char keypad_input;
 unsigned char selected = 0;
 unsigned char patternA[14] = {0xF0,0x0F,0xF0,0x0F,0xF0,0x0F,0xF0,0x0F,0xF0,0x0F,0xF0,0x0F,0xF0,0x0F};
