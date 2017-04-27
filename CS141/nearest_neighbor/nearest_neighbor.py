@@ -1,9 +1,11 @@
 #!/usr/bin/python
 
 import sys
+import time
 from random import randrange
 from math import sqrt
 import re
+import timeit
 
 class UsageError(Exception):
      pass
@@ -18,6 +20,7 @@ def getfile(filename):
         while i < len(raw_data):
             data[i] = raw_data[i].replace('\n','')
             i += 1
+        file.close()
         return data;
     except FileNotFoundError:
         print("File", filename, "not found! Exiting...")
@@ -84,12 +87,30 @@ def dist(x1, y1, x2, y2):
     
 def bruteforce(x,y):
     min = 10000
-    for i in range(len(x)):
-        for j in range(i,len(x)):
-            if j != i:
-                distance = dist(x[i],y[i],x[j],y[j])
-                if distance < min:
-                    min = distance
+    start = timeit.default_timer()
+    for i in range(0,len(x)-1):
+        for j in range(i+1,len(x)):
+            distance = dist(x[i],y[i],x[j],y[j])
+            if distance < min:
+                min = distance
+        if len(x) > 3:
+            sys.stdout.write('\r')
+            progress = (i/len(x))*100
+            sys.stdout.write('Brute Force Progress: ')
+            sys.stdout.write("%.2f" % progress)
+            sys.stdout.write('% complete')
+            sys.stdout.flush()
+            curr = timeit.default_timer()
+            if progress > 1 and curr-start > 120:
+                print("Timed out at", curr-start, "seconds.")
+                eta = (100-progress)*(curr-start)
+                print("\nAt this rate, it would take", eta, "seconds to complete this operation.")
+                return 9999;
+    if len(x) > 3:
+        sys.stdout.write('\r')
+        sys.stdout.write('                                        ')
+        sys.stdout.write('\r')
+        sys.stdout.flush()
     return min;
 
 def divconq(x,y):
@@ -99,8 +120,8 @@ def divconq(x,y):
         return bruteforce(x,y)
     xl, yl, xr, yr = split(x,y)
     # if we aren't in the base case, recurse on each half
-    minleft = bruteforce(xl,yl)
-    minright = bruteforce(xr,yr)
+    minleft = divconq(xl,yl)
+    minright = divconq(xr,yr)
     d = minleft
     if minright < d:
         d = minright
@@ -125,24 +146,51 @@ def splitpair(x,y,d):
                 min = curr_dist
     return min
 
-def main():
-    infile = ''
-    outfile = ''
-    i = 0
-    try:
-        if len(sys.argv) != 2:
-            raise UsageError('Improper usage.')
-        else:
-            infile = sys.argv[1]
-            data = getfile(infile)
-            outfile = infile.replace('.txt','_distance.txt')
-            x, y = parseData(data)
-            x, y = sortPoints(x,y)
-    except UsageError:
-        print ("Usage: python3 nearest_neighbor.py <inputfile>.txt")
-        exit()
-    print("Divide and Conquer outcome:", divconq(x,y))
-    print("Brute Force Nearest Neighbor outcome:", bruteforce(x,y))
+def writeout(filename,solution):
+    file = open(filename,"w")
+    file.write(solution)
+    file.close()
     
 
-main()
+def main(filename,algorithm):
+    algorithm=algorithm[1:]
+    data = getfile(filename)
+    outfile = filename.replace('.txt','_distance.txt')
+    x, y = parseData(data)
+    start = timeit.default_timer()
+    x, y = sortPoints(x,y)
+    stop = timeit.default_timer()
+    print("Sorted in", stop-start)
+    if algorithm =='dc':
+        dcstart = timeit.default_timer()
+        solution = str(divconq(x,y))
+        print("Divide and Conquer: ", solution)
+        dcstop = timeit.default_timer()
+        print("Runtime (DC):", dcstop-dcstart)
+    if algorithm == 'bf':
+        start = timeit.default_timer()
+        solution = str(bruteforce(x,y))
+        print("Brute Force: ", solution)
+        stop = timeit.default_timer()
+        print("Runtime (BF):", stop-start)
+    if algorithm == 'both':
+        dcstart = timeit.default_timer()
+        solution = str(divconq(x,y))
+        print("Divide and Conquer: ", solution)
+        dcstop = timeit.default_timer()
+        print("Runtime (DC):", dcstop-dcstart)
+        bfstart = timeit.default_timer()
+        print("Brute Force: ", bruteforce(x,y))
+        bfstop = timeit.default_timer()
+        print("Runtime (BF):", bfstop-bfstart)
+        print("Divide and conquer was", (bfstop-bfstart)/(dcstop-dcstart), "times faster.")
+    writeout(outfile,solution)
+     
+if __name__ == '__main__':
+    if len(sys.argv) < 3:
+        print("python assignment1.py -<dc|bf|both> <input_file>")
+        quit(1)
+    if len(sys.argv[1]) < 2:
+        print("python assignment1.py -<dc|bf|both> <input_file>")
+        quit(1)
+    main(sys.argv[2],sys.argv[1])
