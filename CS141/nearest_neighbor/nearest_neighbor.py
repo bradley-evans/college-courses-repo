@@ -87,7 +87,6 @@ def dist(x1, y1, x2, y2):
     
 def bruteforce(x,y):
     min = 10000
-    start = timeit.default_timer()
     for i in range(0,len(x)-1):
         for j in range(i+1,len(x)):
             distance = dist(x[i],y[i],x[j],y[j])
@@ -100,12 +99,6 @@ def bruteforce(x,y):
             sys.stdout.write("%.2f" % progress)
             sys.stdout.write('% complete')
             sys.stdout.flush()
-            curr = timeit.default_timer()
-            if progress > 1 and curr-start > 120:
-                print("Timed out at", curr-start, "seconds.")
-                eta = (100-progress)*(curr-start)
-                print("\nAt this rate, it would take", eta, "seconds to complete this operation.")
-                return 9999;
     if len(x) > 3:
         sys.stdout.write('\r')
         sys.stdout.write('                                        ')
