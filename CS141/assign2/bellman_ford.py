@@ -28,8 +28,10 @@ def BellmanFord(G):
     
     # Enumerate edges from the dataset.
     edges = []
+    instr = 0
     for i in range(len(vertices)):
         for j in range(len(vertices)):
+            instr = instr+1
             if not math.isinf(float(G[1][i][j])):
                 curr_edge = Edge(int(i),int(j),float(G[1][i][j]))
                 edges.append(curr_edge)
@@ -37,19 +39,24 @@ def BellmanFord(G):
         distance = []
         for n in range(len(vertices)):
             distance.append(float("inf"))
+            instr = instr+1
             if n == m:
                 distance[n] = 0;
         for i in range(len(vertices) - 1):
-            for j in range (len(edges)):
+            for j in range(len(edges)):
+                instr = instr+1
                 if distance[edges[j].v] > distance[edges[j].u] + edges[j].w:
                         distance[edges[j].v] = distance[edges[j].u] + edges[j].w
         for i in range(len(edges)):
+            instr = instr+1
             if distance[edges[i].v] > distance[edges[i].u] + edges[i].w:
-                print("Negatice circle.")
+                print("Negative circle.")
                 return 0
         for i in range(len(G[0])):
-            curr_edge = Edge(i,j,distance[i])
+            instr = instr+1
+            curr_edge = Edge(m,i,distance[i])
             pathPairs.append(curr_edge)
+    print("Bellman Ford instruction count: "+str(instr))
     return pathPairs
 
 def FloydWarshall(G):
@@ -58,22 +65,27 @@ def FloydWarshall(G):
     # The pathPairs list will contain the list of vertex pairs and their weights [((s,t),w),...]
     
     distance = []
+    instr = 0
     for i in range(len(G[0])):
         new = []
         for j in range(len(G[0])):
+            instr = instr+1
             new.append(float(edges[i][j]))
         distance.append(new)
         distance[i][i] = 0
     for k in range(len(G[0])):
         for i in range(len(G[0])):
             for j in range(len(G[0])):
+                instr = instr+1
                 if distance[i][j] > (distance[i][k] + distance[k][j]):
                     distance[i][j] = distance[i][k] + distance[k][j]
     for i in range(len(G[0])):
         for j in range(len(G[0])):
+            instr = instr+1
             e = Edge(i,j,distance[i][j]);
             pathPairs.append(e)
-            
+    
+    print("Floyd Warshall instruction count: "+str(instr))
     return pathPairs
 
 def readFile(filename):
@@ -115,7 +127,9 @@ def readFile(filename):
 def printResult(result):
     for i in range(len(result)):
         sys.stdout.write(str(result[i]))
-        sys.stdout.write(" ")
+        sys.stdout.write("\t")
+        if (i%len(edges)) == len(edges)-1:
+            sys.stdout.write("\n")
     print(" ")
 
 def main(filename,algorithm):
@@ -134,16 +148,20 @@ def main(filename,algorithm):
         resultb = BellmanFord(G)
         end=time.clock()
         BFTime=end-start
-        resultf = FloydWarshall(G)
         start=time.clock()
+        resultf = FloydWarshall(G)
         end=time.clock()
         FWTime=end-start
         print("Bellman-Ford pairs:")
         printResult(resultb)
         print("Floyd-Warshall pairs")
         printResult(resultb)
-        print("Bellman-Ford timing: "+str(BFTime))
-        print("Floyd-Warshall timing: "+str(FWTime))
+        print("Bellman-Ford execution time: "+str(BFTime))
+        print("Floyd-Warshall execution time:  "+str(FWTime))
+        if BFTime > FWTime:
+            print("Floyd-Warshall was "+str(BFTime/FWTime)+" times faster.")
+        else:
+            print("Bellman-Ford was"+str(FWTime/BFTime)+" times faster.")
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
